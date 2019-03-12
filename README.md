@@ -40,7 +40,7 @@ with the following sample body:
 	]
 }
 ```
-In return you will recieve a JSON of a the following form:
+In return you will recieve a JSON of the following form:
 ```
 {
     "DE": 3,
