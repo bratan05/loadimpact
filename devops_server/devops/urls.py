@@ -18,5 +18,4 @@ from django.urls import path, include
 
 urlpatterns = [
     path('api/devops', include('logic.urls')),
-    #path('admin/', admin.site.urls),
 ]
