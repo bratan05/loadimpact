@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.process, name='Process input JSON'),
+    path('', views.process, name='process_input'),
 ]

@@ -14,11 +14,10 @@ This will create and activate a new virtual environment for you. You can activat
 
 Install the requirements:
 ```
-pip install django numpy
-```
+pipenv install
 
 # Running the server
-```
+
 cd devops_server
 python manage.py runserver
 ```
