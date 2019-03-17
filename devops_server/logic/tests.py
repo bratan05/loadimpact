@@ -7,7 +7,10 @@ client = Client()
 
 
 class GetSolutionTest(TestCase):
-
+    """
+    Tests the API endpoint output by making a POST request with valid and invalid payloads,
+    and by making a GET request expecting 404.
+    """
     def setUp(self):
         self.valid_payloads = [
             {
@@ -206,7 +209,10 @@ class GetSolutionTest(TestCase):
 
 
 class SolveProblemTests(TestCase):
-
+    """
+    Tests the solve_problem function from views with
+    standard inputs and outputs. Verifies the logic.
+    """
     def test_standard_inputs(self):
         standard_inputs = [
             {
