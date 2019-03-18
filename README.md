@@ -46,3 +46,15 @@ In return you will recieve a JSON of the following form:
     "DM_data_center": "Paris"
 }
 ```
+
+# Building service using docker-compose
+To spin up a docker container with running server issue the following command:
+```
+docker-compose up -d
+```
+Looking at 
+```
+docker ps
+```
+should show that container is running and accepting connections on port 8000.
+
