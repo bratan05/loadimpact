@@ -18,9 +18,9 @@ class GetSolutionTest(TestCase):
                 "DE_capacity": 8,
                 "data_centers": [
                     {"name": "Paris",
-                    "servers": 20},
+                     "servers": 20},
                     {"name": "Stockholm",
-                    "servers": 62}
+                     "servers": 62}
                 ]
             },
             {

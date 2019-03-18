@@ -58,15 +58,14 @@ def validate_body(body: dict):
     if fields_set != body_fields_set:
         raise ValueError("Got unexpected set of fields {body} "
                          "instead of {expected}".format(
-                         body=body_fields_set,
-                         expected=fields_set))
+                          body=body_fields_set,
+                          expected=fields_set))
 
     # data_centers must be a list
     if type(body["data_centers"]) != list:
         raise ValueError("Expecting a list of data centers, "
                          "instead got value {data_centers} instead".format(
-                         data_centers=body["data_centers"]))
-
+                          data_centers=body["data_centers"]))
 
     data_centers_fields_set = {"name", "servers"}
     for data_center in body['data_centers']:
@@ -75,27 +74,27 @@ def validate_body(body: dict):
             raise ValueError("Got unexpected set of data_centers fields "
                              "{data_center} instead of "
                              "{expected} for entry {entry}".format(
-                             data_center=set(data_center.keys()),
-                             expected=data_centers_fields_set,
-                             entry=data_center))
+                              data_center=set(data_center.keys()),
+                              expected=data_centers_fields_set,
+                              entry=data_center))
         # name field is a string
         if type(data_center["name"]) != str:
             raise ValueError("Data center name must be str, got "
                              "{data_center} for entry {entry}".format(
-                             data_center=data_center["name"],
-                             entry=data_center))
+                              data_center=data_center["name"],
+                              entry=data_center))
         # servers field is an int
         if type(data_center["servers"]) != int:
             raise ValueError("Number of servers must be int, got "
                              "{servers} for entry {entry}".format(
-                             servers=data_center["servers"],
-                             entry=data_center))
+                              servers=data_center["servers"],
+                              entry=data_center))
         # servers field is defined on [1, Inf)
         if data_center["servers"] < 1:
             raise ValueError("Numeric value for servers {value} "
                              "is smaller than 1 for entry {entry}".format(
-                             value=data_center["servers"],
-                             entry=data_center))
+                              value=data_center["servers"],
+                              entry=data_center))
 
     capacity = ["DM_capacity", "DE_capacity"]
     for key in capacity:
@@ -130,7 +129,7 @@ def solve_problem(body: dict):
     for DM_position in body['data_centers']:
         DE_count = 0
         for s in body['data_centers']:
-            if s['name']==DM_position['name']:
+            if s['name'] == DM_position['name']:
                 # delta is the number of DE's required to cover what's left after
                 # putting DM to the given datacenter
                 delta = int(np.ceil((s['servers']-body['DM_capacity'])/body['DE_capacity']))
@@ -142,7 +141,7 @@ def solve_problem(body: dict):
                     DE_count += delta
             else:
                 DE_count += int(np.ceil(s['servers']/body['DE_capacity']))
-        solutions.append({"DE":DE_count, "DM_data_center": DM_position['name']})
+        solutions.append({"DE": DE_count, "DM_data_center": DM_position['name']})
     solutions_sorted = sorted(solutions, key=lambda k: k['DE'])
     return solutions_sorted[0]
 
@@ -154,7 +153,7 @@ def dict_raise_on_duplicates(ordered_pairs: dict):
     d = {}
     for k, v in ordered_pairs:
         if k in d:
-           raise ValueError("duplicate key: %r" % (k,))
+            raise ValueError("duplicate key: %r" % (k,))
         else:
-           d[k] = v
+            d[k] = v
     return d
